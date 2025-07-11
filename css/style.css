@@ -1,0 +1,112 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  height: 100vh;
+  background-image: url('/assets/img/pexels-muhtelifane-70593160-18767914.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;   
+  background-position: center;  
+  overflow: hidden;  
+  position: relative;
+  z-index: -2;
+}
+.title{
+  font-family: 'Amiri', serif; 
+  text-align: center;
+  margin-top: 80px;
+  font-size: 4rem;
+  color: rgb(240, 227, 203);
+  text-shadow: 1px 1px 0 #bfa76f,
+  2px 2px 5px rgba(0, 0, 0, 0.5)
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100vh; /* FAQT MINIMUM ekrancha */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 40px;
+  z-index: 1;
+}
+
+.main-page {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 ustun */
+  gap: 30px;
+  max-width: 1000px;
+  width: 100%;
+  justify-items: center;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.15);  /* Yarim shaffof oq */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 250px;
+  height: 140px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);       /* Glass effect */
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Amiri', serif;
+  transition: all 0.3s ease;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);   /* Pastdan soyasi */
+  cursor: pointer;
+}
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  html, body {
+    height: auto;
+    overflow-y: auto;        /* pastga scroll bo‘ladi */
+    overflow-x: hidden;      /* yon scroll bo‘lmasin */
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2ta ustun */
+    justify-items: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: 250px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  html, body {
+    height: auto;
+    overflow-y: auto;       
+    overflow-x: hidden;     
+  }
+  .title{
+    font-size: 2rem;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .card {
+    width: 250px;
+  }
+}
+
