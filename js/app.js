@@ -41,23 +41,34 @@ generateBtn.addEventListener('click', async function () {
   const randomJuz = Math.floor(Math.random() * (endJuz - startJuz + 1)) + startJuz;
 
   try {
-    const res = await fetch(`https://api.alquran.cloud/v1/juz/${randomJuz}`);
+    const res = await fetch(`https://api.alquran.cloud/v1/juz/${randomJuz}/ar.alafasy`);
     const data = await res.json();
 
     const ayatList = data.data.ayahs;
     const randomIndex = Math.floor(Math.random() * ayatList.length);
-    const ayah = ayatList[randomIndex];
+    const ayah = ayatList[randomIndex]; // ✅ Bu yerda aniqlanmoqda
 
+    // ✅ Faqat shu scope ichida ishlatish kerak
     ayatResult.innerHTML = `
+      <p style="font-size: 2rem; text-align: center; margin-top: 30px">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
       <p style="font-size: 2rem; text-align: center; margin-top: 30px">${ayah.text}</p>
       <hr style="margin: 20px 0;">
-      <p style="text-align: center;">📖 <b>${ayah.surah.name}</b> — <b>Oyat: ${ayah.numberInSurah}</b></p>
+      <p style="text-align: center;">📖 <b>${ayah.surah.name}</b> — Oyat: <b>${ayah.numberInSurah}</b></p>
       <p style="text-align: center;">🕋 Juz: ${ayah.juz} — 📄 Page: ${ayah.page}</p>
+      <div style="margin-top: 25px; text-align: center;">
+        <audio controls style="width: 100%; max-width: 400px;">
+          <source src="${ayah.audio}" type="audio/mpeg" />
+          Audio eshittirib bo‘lmadi.
+        </audio>
+      </div>
     `;
   } catch (err) {
+    
     ayatResult.innerHTML = `<p style="color:red;">Xatolik yuz berdi. Qayta urinib ko‘ring.</p>`;
+    console.error("Fetch error:", err);
   }
 });
+
 
 closeBtn.addEventListener('click', function () {
   modal.style.display = 'none';
