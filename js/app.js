@@ -49,9 +49,9 @@ generateBtn.addEventListener('click', async function () {
     const ayah = ayatList[randomIndex];
 
     ayatResult.innerHTML = `
-      <p style="font-size: 2rem; text-align: center;">${ayah.text}</p>
+      <p style="font-size: 2rem; text-align: center; margin-top: 30px">${ayah.text}</p>
       <hr style="margin: 20px 0;">
-      <p style="text-align: center;">📖 <b>${ayah.surah.name}</b></p>
+      <p style="text-align: center;">📖 <b>${ayah.surah.name}</b> — <b>Oyat: ${ayah.numberInSurah}</b></p>
       <p style="text-align: center;">🕋 Juz: ${ayah.juz} — 📄 Page: ${ayah.page}</p>
     `;
   } catch (err) {
